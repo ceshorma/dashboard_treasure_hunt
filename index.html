@@ -8,6 +8,7 @@
   :root{
     --teal:#0098AA;
     --teal-oscuro:#007A88;
+    --teal-claro:#EAF8FA;
     --texto:#36424A;
     --gris:#6D6D6D;
     --bg:#F5F6F7;
@@ -15,35 +16,29 @@
     --amarillo:#F4AA00;
     --naranjo:#E55302;
     --verde:#2E9E5B;
-    --rojo-tenue:#F8E0DA;
+    --verde-claro:#E4F5EA;
+    --rojo-claro:#FBE6DE;
+    --linea:#E3E8EA;
     --sombra:0 4px 18px rgba(54,66,74,.10);
     --sombra-fuerte:0 10px 32px rgba(54,66,74,.18);
   }
-
   *{box-sizing:border-box;margin:0;padding:0}
-
   html,body{height:100%}
-
   body{
     font-family:system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg);
-    color:var(--texto);
-    line-height:1.45;
-    -webkit-font-smoothing:antialiased;
+    background:var(--bg);color:var(--texto);line-height:1.45;-webkit-font-smoothing:antialiased;
   }
 
-  /* ===== Pantallas ===== */
+  /* Pantallas */
   .pantalla{display:none;min-height:100vh;width:100%}
   .pantalla.activa{display:block;animation:aparecer .4s ease}
   @keyframes aparecer{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .contenedor{max-width:1080px;margin:0 auto;padding:24px 20px 70px}
 
-  .contenedor{max-width:1180px;margin:0 auto;padding:24px 20px 60px}
-
-  /* ===== Botones ===== */
+  /* Botones */
   .btn{
     display:inline-flex;align-items:center;gap:.5rem;justify-content:center;
-    border:none;border-radius:12px;cursor:pointer;
-    font-family:inherit;font-weight:700;font-size:1.05rem;
+    border:none;border-radius:12px;cursor:pointer;font-family:inherit;font-weight:700;font-size:1.05rem;
     padding:.85rem 1.6rem;background:var(--teal);color:#fff;
     transition:transform .12s ease, box-shadow .2s ease, background .2s ease;
     box-shadow:0 4px 12px rgba(0,152,170,.30);
@@ -52,267 +47,243 @@
   .btn:active:not(:disabled){transform:translateY(0)}
   .btn:disabled{background:#B9C2C7;color:#EFF2F3;cursor:not-allowed;box-shadow:none}
   .btn.secundario{background:#fff;color:var(--teal);box-shadow:inset 0 0 0 2px var(--teal)}
-  .btn.secundario:hover:not(:disabled){background:#EAF8FA;transform:translateY(-2px)}
-  .btn.grande{font-size:1.25rem;padding:1rem 2.2rem}
+  .btn.secundario:hover:not(:disabled){background:var(--teal-claro);transform:translateY(-2px)}
+  .btn.fantasma{background:transparent;color:var(--gris);box-shadow:inset 0 0 0 2px var(--linea)}
+  .btn.fantasma:hover:not(:disabled){background:#fff;color:var(--texto)}
+  .btn.grande{font-size:1.2rem;padding:1rem 2.1rem}
 
-  /* ===== Inicio ===== */
-  #pantalla-inicio .contenedor{
-    max-width:760px;min-height:100vh;display:flex;flex-direction:column;
-    justify-content:center;align-items:center;text-align:center;gap:1.2rem;
-  }
-  .logo-tag{
-    display:inline-flex;align-items:center;gap:.5rem;
-    background:#EAF8FA;color:var(--teal-oscuro);
-    padding:.4rem 1rem;border-radius:999px;font-weight:700;font-size:.95rem;
-    letter-spacing:.02em;
-  }
-  #pantalla-inicio h1{font-size:2.8rem;line-height:1.1;letter-spacing:-.02em}
-  #pantalla-inicio .lupa{font-size:3.4rem;display:block;margin-bottom:.2rem}
-  .subtitulo{color:var(--gris);font-size:1.18rem;max-width:560px}
-  .reglas{
-    background:var(--card);border-radius:16px;box-shadow:var(--sombra);
-    padding:1.4rem 1.6rem;text-align:left;max-width:560px;width:100%;
-  }
+  /* Inicio */
+  #pantalla-inicio .contenedor{max-width:720px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1.1rem}
+  .logo-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--teal-claro);color:var(--teal-oscuro);padding:.4rem 1rem;border-radius:999px;font-weight:700;font-size:.95rem}
+  #pantalla-inicio .lupa{font-size:3.2rem}
+  #pantalla-inicio h1{font-size:2.7rem;line-height:1.1;letter-spacing:-.02em}
+  .subtitulo{color:var(--gris);font-size:1.15rem;max-width:560px}
+  .reglas{background:var(--card);border-radius:16px;box-shadow:var(--sombra);padding:1.3rem 1.5rem;text-align:left;max-width:560px;width:100%}
   .reglas h3{font-size:1.05rem;margin-bottom:.6rem;color:var(--teal-oscuro)}
-  .reglas ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+  .reglas ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
   .reglas li{display:flex;gap:.7rem;align-items:flex-start;font-size:1rem}
-  .reglas li .ic{font-size:1.3rem;line-height:1.3;flex:0 0 auto}
-  .form-equipo{display:flex;flex-direction:column;gap:.9rem;width:100%;max-width:480px}
-  .form-equipo input{
-    font-family:inherit;font-size:1.25rem;text-align:center;
-    padding:1rem;border:2px solid #DCE2E5;border-radius:12px;color:var(--texto);
-    transition:border-color .2s ease;
-  }
+  .reglas li .ic{font-size:1.25rem;flex:0 0 auto}
+  .form-equipo{display:flex;flex-direction:column;gap:.9rem;width:100%;max-width:460px}
+  .form-equipo input{font-family:inherit;font-size:1.2rem;text-align:center;padding:1rem;border:2px solid #DCE2E5;border-radius:12px;color:var(--texto)}
   .form-equipo input:focus{outline:none;border-color:var(--teal)}
 
-  /* ===== Cabecera juego ===== */
-  .barra-juego{
-    position:sticky;top:0;z-index:30;background:rgba(245,246,247,.92);
-    backdrop-filter:blur(6px);border-bottom:1px solid #E3E8EA;
-  }
-  .barra-inner{
-    max-width:1180px;margin:0 auto;padding:14px 20px;
-    display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-  }
-  .barra-equipo{display:flex;flex-direction:column}
-  .barra-equipo .etq{font-size:.78rem;color:var(--gris);text-transform:uppercase;letter-spacing:.06em}
-  .barra-equipo .nom{font-size:1.35rem;font-weight:800;color:var(--teal-oscuro)}
-  .barra-centro{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
-  .cronometro{
-    display:flex;align-items:center;gap:.5rem;font-variant-numeric:tabular-nums;
-    font-size:1.6rem;font-weight:800;color:var(--texto);
-  }
-  .cronometro .pt{font-size:1.2rem}
-  .contador{display:flex;gap:.6rem;flex-wrap:wrap}
-  .chip{
-    display:inline-flex;align-items:center;gap:.4rem;
-    padding:.35rem .8rem;border-radius:999px;font-weight:700;font-size:.95rem;
-    background:#fff;box-shadow:var(--sombra);
-  }
-  .chip.pistas{color:var(--amarillo)}
-  .chip.trampa{color:var(--naranjo)}
+  /* Barra de progreso (juego) */
+  .barra-juego{position:sticky;top:0;z-index:30;background:rgba(245,246,247,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--linea)}
+  .barra-inner{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .barra-equipo{display:flex;flex-direction:column;min-width:0}
+  .barra-equipo .etq{font-size:.74rem;color:var(--gris);text-transform:uppercase;letter-spacing:.06em}
+  .barra-equipo .nom{font-size:1.2rem;font-weight:800;color:var(--teal-oscuro);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42vw}
+  .barra-centro{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .mini-stat{display:flex;align-items:center;gap:.4rem;font-weight:800;font-variant-numeric:tabular-nums;font-size:1.15rem}
+  .mini-stat .et{font-size:.72rem;color:var(--gris);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+  .stepper{display:flex;gap:6px;max-width:1080px;margin:0 auto;padding:0 20px 12px;flex-wrap:wrap}
+  .paso{flex:1 1 0;min-width:18px;height:8px;border-radius:6px;background:#DCE2E5;cursor:default;transition:background .2s ease, transform .1s ease}
+  .paso.hecho{background:var(--verde)}
+  .paso.actual{background:var(--teal)}
+  .paso.clic{cursor:pointer}
+  .paso.clic:hover{transform:translateY(-2px)}
 
-  .intro-juego{padding:20px 0 6px}
-  .intro-juego h2{font-size:1.7rem;letter-spacing:-.01em}
-  .intro-juego p{color:var(--gris);max-width:760px;margin-top:.3rem}
+  /* Tarjeta de etapa */
+  .etapa-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:18px 0 4px}
+  .etapa-num{font-size:.85rem;font-weight:800;color:var(--teal);letter-spacing:.05em;text-transform:uppercase}
+  .estrellas{color:var(--amarillo);font-size:1.1rem;letter-spacing:2px}
+  .estrellas .vacia{color:#D8DEE1}
+  .etapa-titulo{font-size:1.9rem;letter-spacing:-.01em;margin:.1rem 0 .2rem}
+  .objetivo{display:inline-flex;align-items:center;gap:.5rem;background:var(--teal-claro);color:var(--teal-oscuro);padding:.35rem .8rem;border-radius:999px;font-size:.9rem;font-weight:700}
+  .mision{background:#FFF8E8;border-left:4px solid var(--amarillo);border-radius:10px;padding:.85rem 1rem;margin:16px 0;font-size:1.05rem}
+  .mision b{color:#9A6B00}
 
-  /* ===== Grid de tarjetas ===== */
-  .grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:18px;
-  }
+  .etapa-card{background:var(--card);border-radius:18px;box-shadow:var(--sombra);padding:22px;margin-top:4px}
+  .titulo-mini{font-weight:800;color:var(--texto);margin-bottom:.5rem;font-size:1.05rem}
+  .titulo-mini .u{font-size:.82rem;color:var(--gris);font-weight:600}
 
-  .card{
-    position:relative;background:var(--card);border-radius:16px;
-    box-shadow:var(--sombra);padding:18px 18px 20px;cursor:pointer;
-    border:3px solid transparent;
-    transition:transform .14s ease, box-shadow .2s ease, border-color .2s ease;
-    display:flex;flex-direction:column;min-height:230px;
-  }
-  .card:hover{transform:translateY(-4px);box-shadow:var(--sombra-fuerte)}
-  .card .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:.4rem}
-  .card .titulo{font-size:1.08rem;font-weight:800;color:var(--texto);line-height:1.25}
-  .card .sub{font-size:.82rem;color:var(--gris)}
-
-  /* Badge de selección (esquina) */
-  .badge-sel{
-    position:absolute;top:-14px;right:-14px;width:42px;height:42px;border-radius:50%;
-    display:none;align-items:center;justify-content:center;font-size:1.3rem;
-    box-shadow:var(--sombra-fuerte);color:#fff;z-index:5;
-  }
-  .card.pista{border-color:var(--amarillo)}
-  .card.pista .badge-sel{display:flex;background:var(--amarillo);animation:pop .25s ease}
-  .card.trampa{border-color:var(--naranjo)}
-  .card.trampa .badge-sel{display:flex;background:var(--naranjo);animation:pop .25s ease}
-  @keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
-
-  .card.shake{animation:shake .4s ease}
-  @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
-
-  /* Cuerpo de la métrica */
-  .metrica-cuerpo{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.4rem;padding:.3rem 0}
-  .num-grande{font-size:2.7rem;font-weight:800;line-height:1;color:var(--texto);letter-spacing:-.02em}
-  .num-sub{font-size:.95rem;color:var(--gris)}
-  .delta{font-size:1.05rem;font-weight:700;display:inline-flex;align-items:center;gap:.25rem}
-  .delta.baja{color:var(--naranjo)}
-  .delta.sube{color:var(--verde)}
-  .delta.estable{color:var(--gris)}
-
-  /* Sparkline / barras */
-  svg.spark{width:100%;height:74px;display:block}
-  .barras-mini{display:flex;flex-direction:column;gap:7px;width:100%}
-  .barra-fila{display:flex;align-items:center;gap:.5rem;font-size:.85rem}
-  .barra-fila .lbl{flex:0 0 42%;color:var(--texto);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .barra-fila .track{flex:1;height:14px;background:#EDF1F2;border-radius:7px;overflow:hidden}
-  .barra-fila .fill{height:100%;border-radius:7px;background:var(--teal)}
-  .barra-fila .val{flex:0 0 auto;font-weight:700;color:var(--gris);min-width:34px;text-align:right}
-
-  .leyenda-mes{display:flex;justify-content:space-between;font-size:.72rem;color:var(--gris);margin-top:2px}
+  /* Gráficos */
+  svg.spark{width:100%;height:120px;display:block}
+  .grafico-box{background:#FAFBFB;border:1px solid var(--linea);border-radius:12px;padding:14px}
+  .grafico-doble{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .leyenda-mes{display:flex;justify-content:space-between;font-size:.78rem;color:var(--gris);margin-top:4px}
   .leyenda-mes span.hito{color:var(--naranjo);font-weight:700}
+  .barras-mini{display:flex;flex-direction:column;gap:9px;width:100%}
+  .barra-fila{display:flex;align-items:center;gap:.6rem;font-size:.92rem}
+  .barra-fila .lbl{flex:0 0 44%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .barra-fila .track{flex:1;height:16px;background:#EDF1F2;border-radius:8px;overflow:hidden}
+  .barra-fila .fill{height:100%;border-radius:8px;background:var(--teal);transition:width .5s ease}
+  .barra-fila .val{flex:0 0 auto;font-weight:700;color:var(--gris);min-width:46px;text-align:right}
+  .num-foco{font-size:2.8rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .num-sub{color:var(--gris);font-size:.95rem}
 
-  /* Reveal */
-  .explicacion{
-    margin-top:.7rem;font-size:.92rem;line-height:1.4;color:var(--texto);
-    background:#F2F5F6;border-radius:10px;padding:.7rem .8rem;display:none;
-  }
-  .card.revelada .explicacion{display:block;animation:aparecer .4s ease}
-  .sello{
-    display:none;align-self:flex-start;margin-top:.7rem;
-    padding:.28rem .7rem;border-radius:8px;font-size:.78rem;font-weight:800;
-    letter-spacing:.05em;text-transform:uppercase;
-  }
-  .card.revelada .sello{display:inline-block}
-  .sello.tesoro{background:#FDF1D6;color:#9A6B00}
-  .sello.trampa{background:#FBDDCF;color:#B83C00}
-  .sello.apoyo{background:#DCF3F6;color:var(--teal-oscuro)}
-  .sello.neutral{background:#E9ECEE;color:var(--gris)}
+  /* Selector de meses (etapa 1) */
+  .meses-sel{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .mes-chip{flex:1 1 0;min-width:60px;padding:.6rem .3rem;border:2px solid var(--linea);border-radius:10px;background:#fff;font-weight:700;cursor:pointer;text-align:center;transition:all .15s ease}
+  .mes-chip:hover{border-color:var(--teal)}
+  .mes-chip.sel{border-color:var(--teal);background:var(--teal-claro);color:var(--teal-oscuro)}
 
-  .card.revelada{cursor:default}
-  .card.revelada:hover{transform:none}
-  .card.ok-mark{box-shadow:0 0 0 3px var(--verde), var(--sombra)}
-  .card.mal-mark{box-shadow:0 0 0 3px var(--naranjo), var(--sombra);background:var(--rojo-tenue)}
-  .veredicto{
-    display:none;margin-top:.55rem;font-size:.85rem;font-weight:700;
-  }
-  .card.revelada .veredicto{display:block}
-  .veredicto.ok{color:var(--verde)}
-  .veredicto.mal{color:var(--naranjo)}
+  /* Opciones (single choice) */
+  .opciones{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .opcion{display:flex;align-items:center;gap:.8rem;text-align:left;width:100%;border:2px solid var(--linea);background:#fff;border-radius:12px;padding:.85rem 1rem;cursor:pointer;font-family:inherit;font-size:1.02rem;color:var(--texto);transition:all .15s ease}
+  .opcion:hover{border-color:var(--teal);background:#FCFEFE}
+  .opcion .marca{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:2px solid #C4CCD0;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .opcion.sel{border-color:var(--teal);background:var(--teal-claro)}
+  .opcion.sel .marca{border-color:var(--teal);background:var(--teal);color:#fff}
+  .opcion.ok{border-color:var(--verde);background:var(--verde-claro)}
+  .opcion.ok .marca{border-color:var(--verde);background:var(--verde);color:#fff}
+  .opcion.mal{border-color:var(--naranjo);background:var(--rojo-claro)}
+  .opcion.mal .marca{border-color:var(--naranjo);background:var(--naranjo);color:#fff}
+  .opcion .mini-svg{flex:0 0 auto;width:120px}
+  .opcion-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:6px}
+  .opcion-grid .opcion{flex-direction:column;align-items:stretch;text-align:center}
+  .opcion-grid .opcion .mini-svg{width:100%}
 
-  /* Acciones */
-  .acciones{display:flex;justify-content:center;gap:1rem;margin-top:30px;flex-wrap:wrap}
-  .aviso{
-    text-align:center;color:var(--naranjo);font-weight:700;margin-top:14px;
-    min-height:1.4em;
-  }
+  /* Clasificar (chips a cubos) */
+  .clasif-instr{font-size:.92rem;color:var(--gris);margin-bottom:10px}
+  .cubos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  .cubo{border:2px dashed var(--linea);border-radius:12px;padding:10px;min-height:60px}
+  .cubo h4{font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;margin-bottom:8px}
+  .cubo.a h4{color:var(--teal-oscuro)} .cubo.b h4{color:var(--naranjo)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip-item{border:2px solid var(--linea);background:#fff;border-radius:999px;padding:.5rem .9rem;font-weight:700;cursor:pointer;font-family:inherit;font-size:.95rem;transition:all .15s ease}
+  .chip-item:hover{border-color:var(--teal)}
+  .chip-item.g0{border-color:var(--teal);background:var(--teal-claro);color:var(--teal-oscuro)}
+  .chip-item.g1{border-color:var(--naranjo);background:var(--rojo-claro);color:#B83C00}
+  .chip-item.ok{box-shadow:0 0 0 2px var(--verde)}
+  .chip-item.mal{box-shadow:0 0 0 2px var(--naranjo)}
+  .chip-pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 
-  /* ===== Final ===== */
-  #pantalla-final .contenedor{
-    min-height:100vh;display:flex;flex-direction:column;
-    justify-content:center;align-items:center;text-align:center;gap:1rem;position:relative;
-  }
-  .tarjeta-final{
-    background:var(--card);border-radius:24px;box-shadow:var(--sombra-fuerte);
-    padding:2.6rem 2.4rem;max-width:560px;width:100%;position:relative;z-index:2;
-    animation:aparecer .5s ease;
-  }
+  /* Emparejar (filas con opciones) */
+  .empareja-fila{border:1px solid var(--linea);border-radius:12px;padding:12px;margin-bottom:10px}
+  .empareja-fila .pregunta{font-weight:700;margin-bottom:8px}
+  .empareja-ops{display:flex;flex-wrap:wrap;gap:8px}
+  .op-mini{border:2px solid var(--linea);background:#fff;border-radius:10px;padding:.45rem .8rem;font-weight:700;cursor:pointer;font-family:inherit;font-size:.92rem;transition:all .15s ease}
+  .op-mini:hover{border-color:var(--teal)}
+  .op-mini.sel{border-color:var(--teal);background:var(--teal-claro);color:var(--teal-oscuro)}
+  .op-mini.ok{border-color:var(--verde);background:var(--verde-claro)}
+  .op-mini.mal{border-color:var(--naranjo);background:var(--rojo-claro)}
+
+  /* Ordenar (secuencia) */
+  .seq-pool{display:flex;flex-direction:column;gap:8px;margin-bottom:8px}
+  .seq-item{display:flex;align-items:center;gap:.8rem;border:2px solid var(--linea);background:#fff;border-radius:12px;padding:.8rem 1rem;cursor:pointer;font-weight:600;transition:all .15s ease}
+  .seq-item:hover{border-color:var(--teal)}
+  .seq-item .orden{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:#EDF1F2;color:var(--gris);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .seq-item.elegido{border-color:var(--teal);background:var(--teal-claro)}
+  .seq-item.elegido .orden{background:var(--teal);color:#fff}
+  .seq-item.ok{border-color:var(--verde);background:var(--verde-claro)}
+  .seq-item.ok .orden{background:var(--verde);color:#fff}
+  .seq-item.mal{border-color:var(--naranjo);background:var(--rojo-claro)}
+  .sub-bloque{margin-top:18px}
+  .sub-bloque > .titulo-mini{margin-bottom:8px}
+
+  /* Acciones, pista, feedback, lección */
+  .pista-box{display:none;background:#FFF8E8;border-radius:10px;padding:.8rem 1rem;margin-top:14px;font-size:.95rem;border-left:4px solid var(--amarillo)}
+  .pista-box.visible{display:block;animation:aparecer .3s ease}
+  .feedback{display:none;border-radius:12px;padding:1rem 1.1rem;margin-top:16px;font-size:1rem;animation:aparecer .35s ease}
+  .feedback.visible{display:block}
+  .feedback.bien{background:var(--verde-claro);border-left:4px solid var(--verde)}
+  .feedback.mal{background:var(--rojo-claro);border-left:4px solid var(--naranjo)}
+  .feedback .titf{font-weight:800;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+  .leccion{display:none;background:var(--teal-claro);border-radius:12px;padding:1rem 1.1rem;margin-top:12px;animation:aparecer .35s ease}
+  .leccion.visible{display:block}
+  .leccion .titf{font-weight:800;color:var(--teal-oscuro);display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem}
+  .acciones-etapa{display:flex;justify-content:space-between;gap:1rem;margin-top:22px;flex-wrap:wrap}
+  .acciones-etapa .izq{display:flex;gap:.7rem;flex-wrap:wrap}
+
+  /* Repaso */
+  #pantalla-repaso .contenedor{max-width:760px}
+  #pantalla-repaso h1{font-size:2.2rem;text-align:center;margin-bottom:.3rem}
+  #pantalla-repaso .sub{text-align:center;color:var(--gris);margin-bottom:1.4rem}
+  .repaso-lista{display:flex;flex-direction:column;gap:10px}
+  .repaso-item{display:flex;gap:.9rem;align-items:flex-start;background:var(--card);border-radius:12px;box-shadow:var(--sombra);padding:1rem 1.1rem}
+  .repaso-item .ck{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .repaso-item .tt{font-weight:800;color:var(--texto)}
+  .repaso-item .ds{font-size:.93rem;color:var(--gris)}
+
+  /* Final */
+  #pantalla-final .contenedor{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:1rem;position:relative}
+  .tarjeta-final{background:var(--card);border-radius:24px;box-shadow:var(--sombra-fuerte);padding:2.6rem 2.4rem;max-width:560px;width:100%;position:relative;z-index:2;animation:aparecer .5s ease}
   .tarjeta-final .emoji{font-size:3.4rem}
-  .tarjeta-final h2{font-size:1.5rem;color:var(--gris);font-weight:600;margin-top:.4rem}
-  .tarjeta-final .equipo-final{font-size:2.2rem;font-weight:800;color:var(--teal-oscuro);margin:.1rem 0 .6rem}
-  .puntaje-grande{font-size:4.6rem;font-weight:800;color:var(--teal);line-height:1;letter-spacing:-.03em}
-  .puntaje-grande small{font-size:1.4rem;color:var(--gris);font-weight:600}
-  .mensaje-final{font-size:1.2rem;margin:.8rem 0 .4rem;font-weight:700}
+  .tarjeta-final h2{font-size:1.4rem;color:var(--gris);font-weight:600;margin-top:.4rem}
+  .tarjeta-final .equipo-final{font-size:2.1rem;font-weight:800;color:var(--teal-oscuro);margin:.1rem 0 .5rem}
+  .puntaje-grande{font-size:4.4rem;font-weight:800;color:var(--teal);line-height:1;letter-spacing:-.03em}
+  .puntaje-grande small{font-size:1.3rem;color:var(--gris);font-weight:600}
+  .medalla{font-size:1.15rem;margin:.7rem 0 .3rem;font-weight:800}
   .stats-final{display:flex;justify-content:center;gap:1.6rem;flex-wrap:wrap;margin:1rem 0 1.4rem}
   .stat{display:flex;flex-direction:column}
-  .stat .v{font-size:1.7rem;font-weight:800;color:var(--texto)}
-  .stat .l{font-size:.82rem;color:var(--gris);text-transform:uppercase;letter-spacing:.05em}
-  .desglose{font-size:.92rem;color:var(--gris);text-align:left;background:#F2F5F6;border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.2rem}
-  .desglose div{display:flex;justify-content:space-between;padding:.15rem 0}
-
-  /* Confeti */
+  .stat .v{font-size:1.6rem;font-weight:800;color:var(--texto)}
+  .stat .l{font-size:.8rem;color:var(--gris);text-transform:uppercase;letter-spacing:.05em}
   .confeti{position:fixed;top:-12px;width:11px;height:18px;opacity:.9;z-index:1;border-radius:2px;animation:caer linear forwards}
   @keyframes caer{to{transform:translateY(105vh) rotate(720deg);opacity:.9}}
 
-  /* ===== Responsive ===== */
-  @media (max-width:900px){
-    .grid{grid-template-columns:repeat(2,1fr)}
-  }
+  /* Responsive */
   @media (max-width:760px){
-    .grid{grid-template-columns:1fr}
-    #pantalla-inicio h1{font-size:2.2rem}
-    .barra-inner{justify-content:center;text-align:center}
-    .barra-centro{justify-content:center;width:100%}
-    .intro-juego h2{font-size:1.4rem}
-    .puntaje-grande{font-size:3.6rem}
+    #pantalla-inicio h1{font-size:2.1rem}
+    .etapa-titulo{font-size:1.5rem}
+    .grafico-doble{grid-template-columns:1fr}
+    .opcion-grid{grid-template-columns:1fr}
+    .cubos{grid-template-columns:1fr}
+    .puntaje-grande{font-size:3.5rem}
+    .barra-equipo .nom{max-width:60vw}
   }
 </style>
 </head>
 <body>
 
-<!-- ===================== PANTALLA INICIO ===================== -->
+<!-- ===== INICIO ===== -->
 <section id="pantalla-inicio" class="pantalla activa">
   <div class="contenedor">
     <span class="logo-tag">☕ Café Andino · Taller de datos</span>
-    <span class="lupa">🔎</span>
+    <span class="lupa">🕵️</span>
     <h1>Detectives del Dashboard</h1>
     <p class="subtitulo">
-      En abril, Café Andino lanzó su nuevo cappuccino… y desde entonces algo no anda bien.
-      Su equipo debe explorar las métricas, encontrar <strong>3 pistas valiosas</strong> y
-      desenmascarar <strong>1 métrica trampa</strong>.
+      En abril, Café Andino lanzó su nuevo cappuccino… y algo empezó a fallar. Resolverán
+      <strong>10 etapas</strong>, cada una con una pista y una lección de cómo leer datos sin caer en trampas.
     </p>
-
     <div class="reglas">
-      <h3>¿Cómo se juega?</h3>
+      <h3>¿Cómo funciona?</h3>
       <ul>
-        <li><span class="ic">🔎</span><span>Toca una tarjeta para marcarla como <strong>pista valiosa</strong> (hasta 3).</span></li>
-        <li><span class="ic">⚠️</span><span>Toca de nuevo para marcarla como <strong>métrica trampa</strong> (solo 1).</span></li>
-        <li><span class="ic">🔄</span><span>Otro toque la deja sin marca. Cambia tu selección las veces que quieras.</span></li>
-        <li><span class="ic">🏆</span><span>Pulsa <strong>Revelar hallazgos</strong> para ver tu puntaje y las explicaciones.</span></li>
+        <li><span class="ic">🎯</span><span>Cada etapa tiene una <strong>misión clara</strong> y una dificultad (★). Se desbloquean en orden.</span></li>
+        <li><span class="ic">✅</span><span>Resuelve el reto y pulsa <strong>Comprobar</strong>. Verás si acertaste y <strong>qué aprendiste</strong>.</span></li>
+        <li><span class="ic">💡</span><span>Si te trabas, pide una <strong>pista</strong> (cuesta unos puntos).</span></li>
+        <li><span class="ic">🏆</span><span>Suma puntos según la dificultad y termina con el caso resuelto.</span></li>
       </ul>
     </div>
-
     <form class="form-equipo" id="form-equipo" autocomplete="off">
       <input id="input-equipo" type="text" maxlength="30" placeholder="Nombre del equipo" aria-label="Nombre del equipo">
-      <button class="btn grande" id="btn-comenzar" type="submit" disabled>Comenzar la caza 🕵️</button>
+      <button class="btn grande" id="btn-comenzar" type="submit" disabled>Comenzar la investigación 🔎</button>
     </form>
   </div>
 </section>
 
-<!-- ===================== PANTALLA JUEGO ===================== -->
+<!-- ===== JUEGO ===== -->
 <section id="pantalla-juego" class="pantalla">
   <div class="barra-juego">
     <div class="barra-inner">
       <div class="barra-equipo">
-        <span class="etq">Equipo</span>
+        <span class="etq">Equipo detective</span>
         <span class="nom" id="barra-nombre">—</span>
       </div>
       <div class="barra-centro">
-        <div class="cronometro"><span>⏱️</span><span id="crono">00:00</span></div>
-        <div class="contador">
-          <span class="chip pistas">🔎 Pistas <span id="cont-pistas">0</span>/3</span>
-          <span class="chip trampa">⚠️ Trampa <span id="cont-trampa">0</span>/1</span>
-        </div>
+        <div class="mini-stat"><span class="et">Etapa</span><span id="barra-etapa">1/10</span></div>
+        <div class="mini-stat"><span class="et">Puntos</span><span id="barra-puntos">0</span></div>
+        <div class="mini-stat">⏱️ <span id="crono">00:00</span></div>
       </div>
     </div>
+    <div class="stepper" id="stepper"></div>
   </div>
+  <div class="contenedor" id="etapa-host"></div>
+</section>
 
+<!-- ===== REPASO ===== -->
+<section id="pantalla-repaso" class="pantalla">
   <div class="contenedor">
-    <div class="intro-juego">
-      <h2>Escena del caso: últimas métricas (Ene–Jun)</h2>
-      <p>Explora las 9 tarjetas. El nuevo cappuccino se lanzó en <strong>abril</strong>. ¿Qué métricas revelan la verdad y cuál solo brilla en vano?</p>
-    </div>
-
-    <div class="grid" id="grid"></div>
-
-    <div class="aviso" id="aviso"></div>
-    <div class="acciones" id="acciones-juego">
-      <button class="btn grande" id="btn-revelar">Revelar hallazgos 🏆</button>
-    </div>
-    <div class="acciones" id="acciones-reveal" style="display:none">
-      <button class="btn grande" id="btn-resultados">Ver resultados ➜</button>
+    <h1>🧠 Lo que descubriste</h1>
+    <p class="sub">Antes del veredicto final, repasa las 10 lecciones que dominaste como detective de datos.</p>
+    <div class="repaso-lista" id="repaso-lista"></div>
+    <div style="text-align:center;margin-top:24px">
+      <button class="btn grande" id="btn-ver-final">Ver mi resultado 🏆</button>
     </div>
   </div>
 </section>
 
-<!-- ===================== PANTALLA FINAL ===================== -->
+<!-- ===== FINAL ===== -->
 <section id="pantalla-final" class="pantalla">
   <div class="contenedor">
     <div class="tarjeta-final">
@@ -320,13 +291,12 @@
       <h2>Caso cerrado, equipo</h2>
       <div class="equipo-final" id="final-equipo">—</div>
       <div class="puntaje-grande"><span id="final-puntaje">0</span> <small>pts</small></div>
-      <div class="mensaje-final" id="final-mensaje">—</div>
+      <div class="medalla" id="final-medalla">—</div>
       <div class="stats-final">
         <div class="stat"><span class="v" id="final-tiempo">00:00</span><span class="l">Tiempo</span></div>
-        <div class="stat"><span class="v" id="final-aciertos">0/3</span><span class="l">Pistas</span></div>
-        <div class="stat"><span class="v" id="final-trampa">No</span><span class="l">Trampa</span></div>
+        <div class="stat"><span class="v" id="final-etapas">0/10</span><span class="l">Etapas</span></div>
+        <div class="stat"><span class="v" id="final-pistas">0</span><span class="l">Pistas usadas</span></div>
       </div>
-      <div class="desglose" id="final-desglose"></div>
       <button class="btn grande" id="btn-reiniciar">Jugar de nuevo 🔄</button>
     </div>
   </div>
@@ -335,414 +305,778 @@
 <script>
 "use strict";
 
-/* ============ DATOS ============ */
+/* ===================== DATOS BASE (Café Andino) ===================== */
 var MESES = ["Ene","Feb","Mar","Abr","May","Jun"];
-
-var METRICAS = [
-  {
-    id:1, titulo:"Ventas mensuales", sub:"MM$ por mes", tipo:"linea",
-    datos:[51,52,53,46,44,43], unidad:" MM$", mejorEsAlto:true,
-    rol:"tesoro",
-    explicacion:"🏆 Pista clave: las ventas venían estables y caen justo después del lanzamiento de abril. Es la señal directa del problema."
-  },
-  {
-    id:2, titulo:"Satisfacción (CSAT)", sub:"% de clientes satisfechos", tipo:"linea",
-    datos:[86,85,84,74,70,68], unidad:"%", mejorEsAlto:true,
-    rol:"tesoro",
-    explicacion:"🏆 Pista clave: la satisfacción se desploma tras abril. Algo en la experiencia del cliente empeoró con el nuevo producto."
-  },
-  {
-    id:3, titulo:"Tiempo de espera", sub:"minutos promedio", tipo:"linea",
-    datos:[4,4,5,7,8,8], unidad:" min", mejorEsAlto:false,
-    rol:"tesoro",
-    explicacion:"🏆 Pista clave: la espera casi se duplica tras el lanzamiento. Explica el enojo de los clientes y conecta con las quejas."
-  },
-  {
-    id:4, titulo:"Motivos de quejas", sub:"% del total de reclamos", tipo:"barras",
-    items:[{l:"Tiempo de espera",v:45},{l:"Sabor cappuccino",v:30},{l:"Precio",v:15},{l:"Otros",v:10}],
-    rol:"apoyo",
-    explicacion:"🔗 Apoyo: confirma el diagnóstico. La espera (45%) y el sabor del nuevo cappuccino (30%) son los reclamos dominantes."
-  },
-  {
-    id:5, titulo:"Mix de productos", sub:"ventas por producto (MM$)", tipo:"barras",
-    items:[{l:"Latte (antes)",v:20},{l:"Latte (ahora)",v:14},{l:"Cappuccino (antes)",v:12},{l:"Cappuccino (ahora)",v:10}],
-    maxBarra:22,
-    rol:"apoyo",
-    explicacion:"🔗 Apoyo: el latte clásico (20→14) y el cappuccino (12→10) caen. El nuevo producto canibaliza y no compensa la baja."
-  },
-  {
-    id:6, titulo:"Seguidores en redes", sub:"crecimiento del semestre", tipo:"numero",
-    valor:"+42%", delta:"sube", deltaTexto:"▲ +42% vs. enero",
-    rol:"trampa",
-    explicacion:"⚠️ ¡Métrica trampa! Es una vanity metric: suena genial, pero no se relaciona con ventas ni satisfacción. Más seguidores no arreglan la espera ni el sabor."
-  },
-  {
-    id:7, titulo:"Clientes atendidos", sub:"acumulado histórico", tipo:"linea",
-    datos:[120,250,390,520,650,790], unidad:" mil", mejorEsAlto:true, sinHito:true,
-    rol:"neutral",
-    explicacion:"➖ Distractor: un acumulado SIEMPRE sube, aunque el negocio empeore. Esconde la caída reciente; mira la tendencia mensual, no el total."
-  },
-  {
-    id:8, titulo:"Ticket promedio", sub:"gasto por cliente", tipo:"numero",
-    valor:"$5.200", delta:"estable", deltaTexto:"≈ estable en el semestre",
-    rol:"neutral",
-    explicacion:"➖ Neutral: el ticket se mantiene estable. No explica la caída de ventas (es la cantidad de clientes lo que baja)."
-  },
-  {
-    id:9, titulo:"Tasa de recompra", sub:"clientes frecuentes", tipo:"numero",
-    valor:"29%", delta:"baja", deltaTexto:"▼ desde 38% a 29%",
-    rol:"apoyo",
-    explicacion:"🔗 Apoyo: la fidelidad baja (38%→29%). Es una señal real del deterioro, aunque no es la pista principal del caso."
-  }
-];
-
-var ANSWER = { pistas:[1,2,3], trampa:6 };
-
-var SELLOS = {
-  tesoro:{clase:"tesoro", txt:"Tesoro"},
-  trampa:{clase:"trampa", txt:"Trampa"},
-  apoyo:{clase:"apoyo", txt:"Apoyo"},
-  neutral:{clase:"neutral", txt:"Neutral"}
+var D = {
+  ventas:   [51,52,53,46,44,43],     // MM$
+  csat:     [86,85,84,74,70,68],     // %
+  espera:   [4,4,5,7,8,8],           // min
+  quejas:   [{l:"Tiempo de espera",v:45},{l:"Sabor del cappuccino",v:30},{l:"Precio",v:15},{l:"Otros",v:10}],
+  acumulado:[120,250,390,480,550,610],   // clientes acumulados (mil)
+  nuevosMes:[120,130,140,90,70,60],      // clientes nuevos por mes (mil) -> revela la caída
+  ticket:   "$5.200",
+  recompra: [38,35,34,31,30,29]      // %
 };
 
-/* ============ ESTADO ============ */
-var estado = {
-  equipo:"",
-  marcas:{},          // id -> "pista" | "trampa"
-  revelado:false,
-  inicio:0,
-  intervalo:null,
-  segundos:0
-};
-
-/* ============ HELPERS DE GRÁFICOS (SVG) ============ */
+/* ===================== HELPERS DE GRÁFICOS (SVG) ===================== */
 function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
 function sparkline(datos, opts){
   opts = opts || {};
-  var W = 240, H = 74, pad = 8;
-  var min = Math.min.apply(null, datos);
+  var W = 260, H = opts.alto || 120, pad = 12;
+  var min = (opts.min0 ? 0 : Math.min.apply(null, datos));
   var max = Math.max.apply(null, datos);
+  if(opts.max0 != null) max = opts.max0;
   var rango = (max - min) || 1;
   var n = datos.length;
+  var color = opts.color || "var(--teal)";
   var pts = datos.map(function(v,i){
-    var x = pad + i * (W - 2*pad) / (n - 1);
-    var y = H - pad - (v - min) / rango * (H - 2*pad);
-    return [x, y];
+    var x = pad + i*(W-2*pad)/(n-1);
+    var y = H - pad - (v-min)/rango*(H-2*pad);
+    return [x,y];
   });
-  var linea = pts.map(function(p){ return p[0].toFixed(1)+","+p[1].toFixed(1); }).join(" ");
-  // área bajo la curva
+  var linea = pts.map(function(p){return p[0].toFixed(1)+","+p[1].toFixed(1);}).join(" ");
   var area = "M"+pts[0][0].toFixed(1)+","+(H-pad)+" L"+linea.replace(/ /g," L")+" L"+pts[n-1][0].toFixed(1)+","+(H-pad)+" Z";
-  var circulos = pts.map(function(p,i){
-    var r = (i===n-1) ? 4 : 2.4;
-    var fill = (i===n-1) ? "var(--teal)" : "#fff";
-    return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+r+'" fill="'+fill+'" stroke="var(--teal)" stroke-width="1.6"/>';
+  var circ = pts.map(function(p,i){
+    var r=(i===n-1)?4:2.6, f=(i===n-1)?color:"#fff";
+    return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+r+'" fill="'+f+'" stroke="'+color+'" stroke-width="1.6"/>';
   }).join("");
-  // línea de hito en Abril (índice 3)
-  var hito = "";
+  var hito="";
   if(!opts.sinHito){
-    var hx = pad + 3 * (W - 2*pad) / (n - 1);
-    hito = '<line x1="'+hx.toFixed(1)+'" y1="'+pad+'" x2="'+hx.toFixed(1)+'" y2="'+(H-pad)+'" stroke="var(--naranjo)" stroke-width="1.4" stroke-dasharray="3,3" opacity=".75"/>';
+    var hx = pad + 3*(W-2*pad)/(n-1);
+    hito='<line x1="'+hx.toFixed(1)+'" y1="'+pad+'" x2="'+hx.toFixed(1)+'" y2="'+(H-pad)+'" stroke="var(--naranjo)" stroke-width="1.4" stroke-dasharray="3,3" opacity=".75"/>';
   }
-  return ''
-    + '<svg class="spark" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" role="img" aria-label="Tendencia mensual">'
-    + '<path d="'+area+'" fill="rgba(0,152,170,.12)"/>'
-    + hito
-    + '<polyline points="'+linea+'" fill="none" stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>'
-    + circulos
-    + '</svg>';
+  var baseLine = opts.min0 ? '<line x1="'+pad+'" y1="'+(H-pad)+'" x2="'+(W-pad)+'" y2="'+(H-pad)+'" stroke="#C4CCD0" stroke-width="1"/>' : '';
+  return '<svg class="spark" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" role="img" aria-label="Gráfico de línea">'
+    + '<path d="'+area+'" fill="rgba(0,152,170,.12)"/>'+ baseLine + hito
+    + '<polyline points="'+linea+'" fill="none" stroke="'+color+'" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>'
+    + circ + '</svg>';
 }
-
 function leyendaMes(sinHito){
-  return '<div class="leyenda-mes">' + MESES.map(function(m){
-    return (m==="Abr" && !sinHito) ? '<span class="hito">'+m+'▾</span>' : '<span>'+m+'</span>';
-  }).join("") + '</div>';
+  return '<div class="leyenda-mes">'+MESES.map(function(m){
+    return (m==="Abr"&&!sinHito)?'<span class="hito">'+m+'▾</span>':'<span>'+m+'</span>';
+  }).join("")+'</div>';
 }
-
-function barras(items, maxBarra){
+function graficoLinea(datos, opts){
+  return '<div class="grafico-box">'+sparkline(datos,opts)+leyendaMes(opts&&opts.sinHito)+'</div>';
+}
+function barras(items, maxBarra, sufijo){
   var max = maxBarra || Math.max.apply(null, items.map(function(it){return it.v;}));
-  return '<div class="barras-mini">' + items.map(function(it){
-    var pct = Math.round(it.v / max * 100);
-    return '<div class="barra-fila">'
-      + '<span class="lbl">'+esc(it.l)+'</span>'
-      + '<span class="track"><span class="fill" style="width:'+pct+'%"></span></span>'
-      + '<span class="val">'+it.v+'</span>'
-      + '</div>';
-  }).join("") + '</div>';
+  return '<div class="barras-mini">'+items.map(function(it){
+    var pct=Math.round(it.v/max*100);
+    return '<div class="barra-fila"><span class="lbl">'+esc(it.l)+'</span>'
+      +'<span class="track"><span class="fill" style="width:'+pct+'%"></span></span>'
+      +'<span class="val">'+it.v+(sufijo||"")+'</span></div>';
+  }).join("")+'</div>';
+}
+function estrellasHTML(n){
+  var s="";
+  for(var i=0;i<5;i++) s += (i<n)?"★":'<span class="vacia">★</span>';
+  return s;
 }
 
-function numeroGrande(m){
-  var clase = m.delta || "estable";
-  return '<div class="metrica-cuerpo" style="align-items:flex-start">'
-    + '<div class="num-grande">'+esc(m.valor)+'</div>'
-    + '<div class="delta '+clase+'">'+esc(m.deltaTexto)+'</div>'
-    + '</div>';
-}
-
-function cuerpoMetrica(m){
-  if(m.tipo === "linea"){
-    var ult = m.datos[m.datos.length-1];
-    return '<div class="metrica-cuerpo">'
-      + '<div class="num-grande" style="font-size:1.9rem">'+ult+m.unidad+'</div>'
-      + sparkline(m.datos, {sinHito:m.sinHito})
-      + leyendaMes(m.sinHito)
-      + '</div>';
+/* ===================== DEFINICIÓN DE LAS 10 ETAPAS ===================== */
+/* Tipos de mecánica: tendencia, opcion, elegir-grafico, eje, clasificar, desagregar, emparejar, ordenar */
+var ETAPAS = [
+  {
+    titulo:"Primer vistazo", estrellas:1,
+    objetivo:"Leer la tendencia de un gráfico de línea",
+    mision:"Mira las ventas mensuales. <b>¿Hacia dónde va la tendencia</b> y <b>en qué mes</b> cambia el rumbo?",
+    tipo:"tendencia",
+    grafico:{titulo:"Ventas mensuales", u:"MM$", datos:D.ventas, opts:{}},
+    opciones:[{t:"Sube de forma sostenida"},{t:"Se mantiene plana todo el semestre"},{t:"Sube al inicio y luego cae", ok:true}],
+    mesCorrecto:3,
+    pista:"Compara los primeros 3 meses con los últimos 3. El quiebre coincide con el lanzamiento (abril).",
+    feedbackBien:"Las ventas suben hasta marzo y caen desde abril, justo cuando se lanzó el nuevo cappuccino.",
+    feedbackMal:"Fíjate: hay una subida inicial y luego una caída clara. El mes del quiebre es abril.",
+    leccion:"Un gráfico de línea muestra una <b>tendencia en el tiempo</b>. Antes de sacar conclusiones, identifica la dirección general y el punto donde cambia."
+  },
+  {
+    titulo:"Conecta los puntos", estrellas:1,
+    objetivo:"Comparar dos métricas en el tiempo",
+    mision:"Las ventas y la satisfacción (CSAT) están una al lado de la otra. <b>¿Qué tienen en común?</b>",
+    tipo:"opcion",
+    graficos:[{titulo:"Ventas", u:"MM$", datos:D.ventas},{titulo:"Satisfacción (CSAT)", u:"%", datos:D.csat, opts:{color:"var(--amarillo)"}}],
+    opciones:[
+      {t:"Ambas suben durante todo el semestre"},
+      {t:"Ambas caen a partir de abril, el mismo mes", ok:true},
+      {t:"No tienen ninguna relación entre sí"}
+    ],
+    pista:"Mira el mes donde cada línea cambia de dirección. ¿Coincide?",
+    feedbackBien:"Las dos métricas se quiebran en abril. Cuando dos indicadores se mueven juntos tras un evento, vale la pena investigar.",
+    feedbackMal:"Observa el punto de quiebre de cada línea: ambas caen desde abril.",
+    leccion:"Comparar dos series en el <b>mismo eje temporal</b> ayuda a detectar patrones que se mueven juntos tras un evento común."
+  },
+  {
+    titulo:"Correlación ≠ causalidad", estrellas:2,
+    objetivo:"Distinguir una causa real de una coincidencia",
+    mision:"Varias cosas cambiaron a la vez. <b>¿Cuál explica de verdad</b> la caída de la satisfacción?",
+    tipo:"opcion",
+    graficos:[{titulo:"Tiempo de espera", u:"min", datos:D.espera, opts:{color:"var(--naranjo)"}}],
+    opciones:[
+      {t:"Subieron los seguidores en redes, y eso bajó la satisfacción"},
+      {t:"El tiempo de espera subió: más espera → más quejas → menos satisfacción", ok:true},
+      {t:"Cambió el mes en el calendario, nada más"}
+    ],
+    pista:"Una causa real tiene un mecanismo que la conecta con el efecto. ¿Qué cadena tiene sentido?",
+    feedbackBien:"Exacto: el alza del tiempo de espera tiene un mecanismo claro que la conecta con la insatisfacción. Eso es causa, no coincidencia.",
+    feedbackMal:"Que dos cosas ocurran juntas no prueba que una cause la otra. Busca la que tiene un mecanismo lógico: la espera.",
+    leccion:"<b>Correlación no es causalidad.</b> Para afirmar que algo causa otra cosa, necesitas un mecanismo que las conecte, no solo que coincidan en el tiempo."
+  },
+  {
+    titulo:"Métricas de vanidad", estrellas:2,
+    objetivo:"Separar métricas accionables de las de vanidad",
+    mision:"Clasifica cada métrica: <b>¿te ayuda a decidir y actuar (Accionable)</b> o <b>solo se ve bonita (Vanidad)?</b>",
+    tipo:"clasificar",
+    grupos:["Accionable","Vanidad"],
+    items:[
+      {t:"Tiempo de espera", g:0},
+      {t:"Satisfacción (CSAT)", g:0},
+      {t:"Seguidores en redes (+42%)", g:1},
+      {t:"Tasa de recompra", g:0},
+      {t:"Likes del último post", g:1}
+    ],
+    pista:"Una métrica accionable, si cambia, te dice qué hacer. Una de vanidad sube pero no cambia ninguna decisión.",
+    feedbackBien:"Bien clasificado. Las métricas accionables guían decisiones; las de vanidad solo inflan el ego.",
+    feedbackMal:"Revisa: ¿seguir más seguidores o likes cambia alguna decisión del negocio? Esas son de vanidad.",
+    leccion:"Las <b>vanity metrics</b> (seguidores, likes) suben sin impactar el negocio. Prioriza las <b>métricas accionables</b>, que sí guían decisiones."
+  },
+  {
+    titulo:"La trampa del acumulado", estrellas:3,
+    objetivo:"Distinguir un total acumulado de la tendencia real",
+    mision:"Este gráfico de <b>clientes acumulados</b> solo sube. Entre los 3 de abajo, <b>elige el que revela la verdad</b> de lo que pasa mes a mes.",
+    tipo:"elegir-grafico",
+    graficoArriba:{titulo:"Clientes atendidos (acumulado histórico)", u:"mil", datos:D.acumulado, opts:{sinHito:true}},
+    opciones:[
+      {svg:graficoMini([120,130,140,90,70,60],"var(--teal)"), t:"Nuevos clientes por mes", ok:true},
+      {svg:graficoMini([120,250,390,480,550,610],"var(--gris)"), t:"Otra vez el acumulado"},
+      {svg:graficoMini([100,100,100,100,100,100],"var(--gris)"), t:"Una línea plana"}
+    ],
+    pista:"Un acumulado SIEMPRE crece, aunque cada mes lleguen menos clientes. Busca el gráfico mensual (no acumulado).",
+    feedbackBien:"Eso es: los clientes nuevos por mes caen desde abril. El acumulado lo escondía porque solo suma.",
+    feedbackMal:"El acumulado sube sí o sí. La realidad está en el flujo mensual, que cae tras abril.",
+    leccion:"Un <b>total acumulado siempre sube</b> y puede esconder una caída reciente. Para ver la tendencia real, mira el dato <b>incremental</b> (por período)."
+  },
+  {
+    titulo:"El eje engañoso", estrellas:3,
+    objetivo:"Detectar escalas y ejes manipulados",
+    mision:"Los dos gráficos muestran <b>la misma satisfacción</b>. <b>¿Cuál exagera la caída y por qué?</b>",
+    tipo:"eje",
+    grafA:{titulo:"Gráfico A", datos:D.csat, opts:{min0:true, max0:100}},
+    grafB:{titulo:"Gráfico B", datos:D.csat, opts:{}},
+    opciones:[
+      {t:"El A, porque su eje empieza en 0"},
+      {t:"El B, porque su eje no empieza en 0 y amplifica la diferencia", ok:true},
+      {t:"Ninguno: son idénticos"}
+    ],
+    pista:"Mira dónde empieza el eje vertical de cada uno. Un eje recortado hace que un cambio pequeño parezca enorme.",
+    feedbackBien:"Correcto: el gráfico B recorta el eje y hace que la misma caída se vea dramática. El A (desde 0) la muestra en su proporción real.",
+    feedbackMal:"El truco está en el eje vertical: el que NO empieza en 0 (el B) exagera la caída.",
+    leccion:"Un <b>eje truncado</b> (que no parte de 0) exagera los cambios. Siempre revisa la escala antes de impresionarte con una pendiente."
+  },
+  {
+    titulo:"El promedio miente", estrellas:4,
+    objetivo:"Ver cómo un promedio esconde sus segmentos",
+    mision:"El ticket promedio se ve <b>estable en $5.200</b>. Toca <b>“Desagregar por sucursal”</b> y elige la conclusión correcta.",
+    tipo:"desagregar",
+    numero:{valor:D.ticket, sub:"Ticket promedio · estable todo el semestre"},
+    desglose:[{l:"Centro",v:4300},{l:"Plaza",v:5200},{l:"Aeropuerto",v:6100}],
+    desgloseNota:"En enero las tres rondaban los $5.200. Hoy: Centro cayó a $4.300, Aeropuerto subió a $6.100.",
+    opciones:[
+      {t:"Todo está bien: el promedio no se movió"},
+      {t:"El promedio estable esconde que Centro se desplomó (Aeropuerto lo compensa)", ok:true},
+      {t:"El ticket subió en todas las sucursales"}
+    ],
+    pista:"Un mismo promedio puede salir de números muy distintos. Mira sucursal por sucursal.",
+    feedbackBien:"Eso es: el promedio quieto ocultaba que Centro cae fuerte mientras Aeropuerto sube. El detalle estaba en el desglose.",
+    feedbackMal:"El promedio no cambió, pero por dentro hay sucursales que caen mucho. Hay que segmentar.",
+    leccion:"Un <b>promedio agregado puede ocultar segmentos</b> que suben y bajan. Desagrega (por sucursal, producto o cliente) antes de concluir que ‘todo está bien’."
+  },
+  {
+    titulo:"El gráfico correcto", estrellas:4,
+    objetivo:"Elegir el tipo de gráfico según la pregunta",
+    mision:"Para cada pregunta, <b>elige el gráfico más adecuado</b>. No todos los datos se muestran igual.",
+    tipo:"emparejar",
+    filas:[
+      {pregunta:"¿Cómo evolucionan las ventas mes a mes?", ops:["Línea","Barras","Dispersión"], ok:0},
+      {pregunta:"¿Qué motivo de queja pesa más que otro?", ops:["Línea","Barras","Torta de 12 trozos"], ok:1},
+      {pregunta:"¿Hay relación entre espera y satisfacción?", ops:["Torta","Dispersión","Barras"], ok:1}
+    ],
+    pista:"Tendencia en el tiempo → línea. Comparar/rankear categorías → barras. Relación entre dos variables → dispersión.",
+    feedbackBien:"¡Perfecto! Cada pregunta tiene un gráfico que la responde mejor. La torta con muchos trozos casi siempre es mala idea.",
+    feedbackMal:"Recuerda: tiempo→línea, comparar→barras, relación→dispersión. Evita las tortas con demasiadas categorías.",
+    leccion:"<b>El tipo de gráfico debe seguir a la pregunta:</b> línea para tendencias, barras para comparar, dispersión para relaciones. El gráfico equivocado confunde."
+  },
+  {
+    titulo:"Líderes vs rezagados", estrellas:5,
+    objetivo:"Identificar indicadores que anticipan vs los que confirman",
+    mision:"Clasifica cada métrica: <b>¿anticipa el problema (Líder)</b> o <b>lo confirma cuando ya pasó (Rezagado)?</b>",
+    tipo:"clasificar",
+    grupos:["Líder (anticipa)","Rezagado (confirma)"],
+    items:[
+      {t:"Tiempo de espera", g:0},
+      {t:"Satisfacción (CSAT)", g:0},
+      {t:"Ventas mensuales", g:1},
+      {t:"Tasa de recompra", g:1}
+    ],
+    pista:"Un líder se mueve ANTES (la espera sube primero). Un rezagado reacciona DESPUÉS (las ventas caen al final de la cadena).",
+    feedbackBien:"Bien: la espera y el CSAT avisan temprano; las ventas y la recompra confirman cuando el daño ya ocurrió. Vigila los líderes para actuar a tiempo.",
+    feedbackMal:"Piensa en el orden de la cadena: ¿qué se movió primero (líderes) y qué reaccionó al final (rezagados)?",
+    leccion:"Los <b>indicadores líderes</b> (espera, CSAT) anticipan; los <b>rezagados</b> (ventas, recompra) confirman tarde. Monitorea los líderes para prevenir, no solo para lamentar."
+  },
+  {
+    titulo:"Arma la historia", estrellas:5,
+    objetivo:"Sintetizar la evidencia en una recomendación",
+    mision:"Eres el detective jefe. <b>Ordena la cadena causal</b> tocando los pasos en secuencia, y elige <b>qué recomendar</b>.",
+    tipo:"ordenar",
+    pasos:[ /* en orden correcto */
+      "Se lanza el nuevo cappuccino (abril)",
+      "Sube el tiempo de espera",
+      "Aumentan las quejas",
+      "Cae la satisfacción (CSAT)",
+      "Caen la recompra y las ventas"
+    ],
+    recomendacion:{
+      titulo:"¿Qué recomiendas para frenar la caída?",
+      ops:[
+        {t:"Comprar más seguidores en redes para mejorar la imagen"},
+        {t:"Reducir el tiempo de espera (más personal/optimizar el flujo en hora peak)", ok:true},
+        {t:"Subir los precios para compensar la baja de ventas"}
+      ]
+    },
+    kpi:{
+      titulo:"¿Qué KPI vigilarías para actuar a tiempo?",
+      ops:[
+        {t:"Número de seguidores"},
+        {t:"Tiempo de espera (indicador líder)", ok:true},
+        {t:"Ventas del mes pasado"}
+      ]
+    },
+    pista:"La cadena empieza con el lanzamiento y termina en ventas. La acción debe atacar la CAUSA (la espera), y el KPI a vigilar es un indicador líder.",
+    feedbackBien:"¡Caso resuelto! Reconstruiste la cadena, atacaste la causa raíz (la espera) y elegiste un indicador líder para vigilar. Eso es pensar con datos.",
+    feedbackMal:"Revisa el orden (empieza en el lanzamiento, termina en ventas), ataca la causa raíz y vigila un indicador líder.",
+    leccion:"El cierre de todo análisis es <b>una historia causal clara + una recomendación accionable + un KPI a vigilar.</b> Los datos no sirven hasta que guían una decisión."
   }
-  if(m.tipo === "barras"){
-    return '<div class="metrica-cuerpo">'+barras(m.items, m.maxBarra)+'</div>';
-  }
-  return numeroGrande(m);
+];
+
+/* mini gráfico para opciones (etapa 5) */
+function graficoMini(datos, color){
+  return '<div class="mini-svg">'+sparkline(datos,{sinHito:true, alto:70, color:color})+'</div>';
 }
 
-/* ============ RENDER GRID ============ */
-function renderGrid(){
-  var grid = document.getElementById("grid");
-  grid.innerHTML = "";
-  METRICAS.forEach(function(m){
-    var card = document.createElement("div");
-    card.className = "card";
-    card.setAttribute("data-id", m.id);
-    card.setAttribute("role","button");
-    card.setAttribute("tabindex","0");
-    card.innerHTML = ''
-      + '<div class="badge-sel"></div>'
-      + '<div class="card-head"><div><div class="titulo">'+esc(m.titulo)+'</div><div class="sub">'+esc(m.sub)+'</div></div></div>'
-      + cuerpoMetrica(m)
-      + '<span class="sello"></span>'
-      + '<div class="veredicto"></div>'
-      + '<div class="explicacion">'+esc(m.explicacion)+'</div>';
-    card.addEventListener("click", function(){ onCardClick(m.id); });
-    card.addEventListener("keydown", function(e){
-      if(e.key==="Enter" || e.key===" "){ e.preventDefault(); onCardClick(m.id); }
-    });
-    grid.appendChild(card);
-  });
+/* ===================== ESTADO ===================== */
+var estado = null;
+function nuevoEstado(){
+  return { equipo:"", idx:0, viendo:0, puntos:0, completadas:[], pistasUsadas:0,
+           usoPista:{}, intentos:{}, resp:{}, segundos:0, intervalo:null };
 }
 
-/* ============ INTERACCIÓN DE MARCAS ============ */
-function contar(tipo){
-  var n = 0;
-  for(var k in estado.marcas){ if(estado.marcas[k]===tipo) n++; }
-  return n;
-}
-
-function onCardClick(id){
-  if(estado.revelado) return;
-  var actual = estado.marcas[id]; // undefined | "pista" | "trampa"
-  var card = cardEl(id);
-
-  if(actual === undefined){
-    // -> pista (si hay cupo)
-    if(contar("pista") >= 3){ avisar("Ya marcaste 3 pistas. Quita una para marcar otra."); shake(card); return; }
-    estado.marcas[id] = "pista";
-  } else if(actual === "pista"){
-    // -> trampa (si hay cupo)
-    if(contar("trampa") >= 1){
-      // sin cupo de trampa: pasa directo a sin marca
-      delete estado.marcas[id];
-    } else {
-      estado.marcas[id] = "trampa";
-    }
-  } else {
-    // trampa -> sin marca
-    delete estado.marcas[id];
-  }
-  avisar("");
-  actualizarCard(id);
-  actualizarContadores();
-}
-
-function cardEl(id){ return document.querySelector('.card[data-id="'+id+'"]'); }
-
-function actualizarCard(id){
-  var card = cardEl(id);
-  var marca = estado.marcas[id];
-  card.classList.remove("pista","trampa");
-  var badge = card.querySelector(".badge-sel");
-  if(marca === "pista"){ card.classList.add("pista"); badge.textContent = "🔎"; }
-  else if(marca === "trampa"){ card.classList.add("trampa"); badge.textContent = "⚠️"; }
-  else { badge.textContent = ""; }
-}
-
-function actualizarContadores(){
-  document.getElementById("cont-pistas").textContent = contar("pista");
-  document.getElementById("cont-trampa").textContent = contar("trampa");
-}
-
-function avisar(txt){ document.getElementById("aviso").textContent = txt; }
-function shake(card){ card.classList.add("shake"); setTimeout(function(){ card.classList.remove("shake"); }, 420); }
-
-/* ============ CRONÓMETRO ============ */
-function fmt(seg){
-  var m = Math.floor(seg/60), s = seg%60;
-  return (m<10?"0":"")+m+":"+(s<10?"0":"")+s;
-}
+/* ===================== CRONÓMETRO ===================== */
+function fmt(seg){ var m=Math.floor(seg/60),s=seg%60; return (m<10?"0":"")+m+":"+(s<10?"0":"")+s; }
 function iniciarCrono(){
-  estado.inicio = Date.now();
-  estado.segundos = 0;
-  document.getElementById("crono").textContent = "00:00";
-  estado.intervalo = setInterval(function(){
-    estado.segundos = Math.floor((Date.now()-estado.inicio)/1000);
-    document.getElementById("crono").textContent = fmt(estado.segundos);
-  }, 1000);
+  var t0=Date.now();
+  estado.intervalo=setInterval(function(){
+    estado.segundos=Math.floor((Date.now()-t0)/1000);
+    document.getElementById("crono").textContent=fmt(estado.segundos);
+  },1000);
 }
-function detenerCrono(){ if(estado.intervalo){ clearInterval(estado.intervalo); estado.intervalo=null; } }
+function detenerCrono(){ if(estado.intervalo){clearInterval(estado.intervalo);estado.intervalo=null;} }
 
-/* ============ REVELAR ============ */
-function revelar(){
-  if(estado.revelado) return;
-  var nPistas = contar("pista"), nTrampa = contar("trampa");
-  if(nPistas < 3 || nTrampa < 1){
-    var faltan = [];
-    if(nPistas < 3) faltan.push((3-nPistas)+" pista(s)");
-    if(nTrampa < 1) faltan.push("la trampa");
-    avisar("Aún te falta marcar "+faltan.join(" y ")+". Igual puedes revelar, pero pierdes puntos posibles.");
-  }
-  estado.revelado = true;
-  detenerCrono();
-
-  var puntaje = 0, aciertosPistas = 0, trampaOk = false;
-
-  METRICAS.forEach(function(m, idx){
-    var card = cardEl(m.id);
-    var marca = estado.marcas[m.id];
-    var esPistaCorrecta = ANSWER.pistas.indexOf(m.id) !== -1;
-    var esTrampaCorrecta = (ANSWER.trampa === m.id);
-
-    // Puntaje
-    if(marca === "pista"){
-      if(esPistaCorrecta){ puntaje += 10; aciertosPistas++; card.classList.add("ok-mark"); marcarVeredicto(card, true, "¡Pista correcta! +10"); }
-      else { puntaje -= 5; card.classList.add("mal-mark"); marcarVeredicto(card, false, "No era pista valiosa −5"); }
-    } else if(marca === "trampa"){
-      if(esTrampaCorrecta){ puntaje += 20; trampaOk = true; card.classList.add("ok-mark"); marcarVeredicto(card, true, "¡Desenmascaraste la trampa! +20"); }
-      else { puntaje -= 5; card.classList.add("mal-mark"); marcarVeredicto(card, false, "No era la trampa −5"); }
-    } else {
-      // sin marcar: señalar si era importante
-      if(esPistaCorrecta){ marcarVeredicto(card, false, "Se te escapó una pista 🔎"); }
-      else if(esTrampaCorrecta){ marcarVeredicto(card, false, "Aquí estaba la trampa ⚠️"); }
-    }
-
-    // Sello de rol
-    var sello = card.querySelector(".sello");
-    var info = SELLOS[m.rol];
-    sello.className = "sello " + info.clase;
-    sello.textContent = info.txt;
-
-    // animación escalonada de la explicación
-    (function(c,d){ setTimeout(function(){ c.classList.add("revelada"); }, d); })(card, idx*70);
-  });
-
-  if(puntaje < 0) puntaje = 0;
-  estado.resultado = { puntaje:puntaje, aciertosPistas:aciertosPistas, trampaOk:trampaOk, tiempo:estado.segundos };
-
-  document.getElementById("acciones-juego").style.display = "none";
-  document.getElementById("acciones-reveal").style.display = "flex";
-  avisar("");
-}
-
-function marcarVeredicto(card, ok, txt){
-  var v = card.querySelector(".veredicto");
-  v.className = "veredicto " + (ok ? "ok" : "mal");
-  v.textContent = txt;
-}
-
-/* ============ PANTALLA FINAL ============ */
-function mostrarFinal(){
-  var r = estado.resultado;
-  document.getElementById("final-equipo").textContent = estado.equipo;
-  document.getElementById("final-puntaje").textContent = r.puntaje;
-  document.getElementById("final-tiempo").textContent = fmt(r.tiempo);
-  document.getElementById("final-aciertos").textContent = r.aciertosPistas + "/3";
-  document.getElementById("final-trampa").textContent = r.trampaOk ? "Sí ✓" : "No ✗";
-
-  var emoji, mensaje;
-  if(r.puntaje >= 45){ emoji="🏆"; mensaje="¡Detectives expertos! Leyeron los datos como verdaderos profesionales."; }
-  else if(r.puntaje >= 30){ emoji="🔎"; mensaje="¡Muy buen olfato! Encontraron casi toda la verdad del caso."; }
-  else if(r.puntaje >= 15){ emoji="🧐"; mensaje="Buen comienzo. Hay pistas que valen más que otras: vuelvan a la escena."; }
-  else { emoji="🕵️"; mensaje="El caso sigue abierto. Recuerden: una métrica que solo sube puede engañar."; }
-  document.getElementById("final-emoji").textContent = emoji;
-  document.getElementById("final-mensaje").textContent = mensaje;
-
-  var puntosPistas = r.aciertosPistas*10;
-  var puntosTrampa = r.trampaOk ? 20 : 0;
-  var penal = (puntosPistas + puntosTrampa) - r.puntaje;
-  if(penal < 0) penal = 0;
-  var desg = document.getElementById("final-desglose");
-  desg.innerHTML = ''
-    + '<div><span>🔎 Pistas correctas ('+r.aciertosPistas+' × 10)</span><strong>+'+puntosPistas+'</strong></div>'
-    + '<div><span>⚠️ Trampa desenmascarada</span><strong>+'+puntosTrampa+'</strong></div>'
-    + (penal>0 ? '<div><span>✗ Marcas incorrectas</span><strong>−'+penal+'</strong></div>' : '')
-    + '<div style="border-top:1px solid #DCE2E5;margin-top:.3rem;padding-top:.4rem"><span>Total</span><strong>'+r.puntaje+' pts</strong></div>';
-
-  irA("pantalla-final");
-  lanzarConfeti(r.puntaje >= 30 ? 90 : 40);
-}
-
-function lanzarConfeti(cantidad){
-  var colores = ["#0098AA","#F4AA00","#E55302","#2E9E5B","#36424A"];
-  for(var i=0;i<cantidad;i++){
-    (function(){
-      var c = document.createElement("div");
-      c.className = "confeti";
-      c.style.left = Math.random()*100 + "vw";
-      c.style.background = colores[Math.floor(Math.random()*colores.length)];
-      c.style.animationDuration = (2.5 + Math.random()*2) + "s";
-      c.style.animationDelay = (Math.random()*0.6) + "s";
-      c.style.transform = "rotate(" + (Math.random()*360) + "deg)";
-      if(Math.random()>0.6) c.style.borderRadius = "50%";
-      document.body.appendChild(c);
-      setTimeout(function(){ c.remove(); }, 5200);
-    })();
-  }
-}
-
-/* ============ NAVEGACIÓN / RESET ============ */
-function irA(idPantalla){
-  var pantallas = document.querySelectorAll(".pantalla");
-  for(var i=0;i<pantallas.length;i++) pantallas[i].classList.remove("activa");
-  document.getElementById(idPantalla).classList.add("activa");
+/* ===================== NAVEGACIÓN ===================== */
+function irA(id){
+  var ps=document.querySelectorAll(".pantalla");
+  for(var i=0;i<ps.length;i++) ps[i].classList.remove("activa");
+  document.getElementById(id).classList.add("activa");
   window.scrollTo(0,0);
 }
 
-function comenzar(nombre){
-  estado.equipo = nombre;
-  estado.marcas = {};
-  estado.revelado = false;
-  estado.resultado = null;
-  document.getElementById("barra-nombre").textContent = nombre;
-  renderGrid();
-  actualizarContadores();
-  avisar("");
-  document.getElementById("acciones-juego").style.display = "flex";
-  document.getElementById("acciones-reveal").style.display = "none";
-  irA("pantalla-juego");
-  iniciarCrono();
+/* ===================== STEPPER + BARRA ===================== */
+function pintarBarra(){
+  document.getElementById("barra-puntos").textContent=estado.puntos;
+  document.getElementById("barra-etapa").textContent=(estado.viendo+1)+"/10";
+  var step=document.getElementById("stepper"); step.innerHTML="";
+  ETAPAS.forEach(function(e,i){
+    var d=document.createElement("div");
+    d.className="paso";
+    if(estado.completadas.indexOf(i)!==-1) d.className+=" hecho";
+    if(i===estado.viendo) d.className+=" actual";
+    if(i<=estado.idx){ d.className+=" clic"; d.addEventListener("click",function(){ mostrarEtapa(i); }); }
+    d.title="Etapa "+(i+1);
+    step.appendChild(d);
+  });
 }
 
+/* ===================== RENDER DE UNA ETAPA ===================== */
+var respuestaActual; // objeto de trabajo de la etapa visible
+
+function mostrarEtapa(i){
+  estado.viendo=i;
+  var e=ETAPAS[i];
+  var yaHecha=estado.completadas.indexOf(i)!==-1;
+  respuestaActual=estado.resp[i] || {};
+  estado.resp[i]=respuestaActual;
+
+  var host=document.getElementById("etapa-host");
+  host.innerHTML=''
+    + '<div class="etapa-head"><div><div class="etapa-num">Etapa '+(i+1)+' de 10</div>'
+    +   '<div class="etapa-titulo">'+esc(e.titulo)+'</div>'
+    +   '<span class="objetivo">🎯 '+esc(e.objetivo)+'</span></div>'
+    +   '<div class="estrellas" title="Dificultad">'+estrellasHTML(e.estrellas)+'</div></div>'
+    + '<div class="mision">🕵️ <b>Tu misión:</b> '+e.mision+'</div>'
+    + '<div class="etapa-card" id="etapa-cuerpo"></div>'
+    + '<div class="pista-box" id="pista-box">💡 <b>Pista:</b> '+esc(e.pista)+'</div>'
+    + '<div class="feedback" id="feedback"></div>'
+    + '<div class="leccion" id="leccion"><div class="titf">🧠 Lo que aprendiste</div><div>'+e.leccion+'</div></div>'
+    + '<div class="acciones-etapa">'
+    +   '<div class="izq"><button class="btn fantasma" id="btn-pista">💡 Pedir pista</button></div>'
+    +   '<button class="btn" id="btn-comprobar">Comprobar ✓</button>'
+    + '</div>';
+
+  renderCuerpo(e, document.getElementById("etapa-cuerpo"), yaHecha);
+
+  document.getElementById("btn-pista").addEventListener("click",pedirPista);
+  document.getElementById("btn-comprobar").addEventListener("click",comprobar);
+
+  if(estado.usoPista[i]) document.getElementById("pista-box").classList.add("visible");
+
+  if(yaHecha){ mostrarResuelta(e, true); }
+  pintarBarra();
+}
+
+function pedirPista(){
+  var i=estado.viendo;
+  document.getElementById("pista-box").classList.add("visible");
+  if(!estado.usoPista[i]){ estado.usoPista[i]=true; estado.pistasUsadas++; }
+}
+
+/* ===================== RENDER POR TIPO DE MECÁNICA ===================== */
+function renderCuerpo(e, host, bloqueado){
+  switch(e.tipo){
+    case "tendencia": return renderTendencia(e,host);
+    case "opcion":    return renderOpcion(e,host);
+    case "elegir-grafico": return renderElegirGrafico(e,host);
+    case "eje":       return renderEje(e,host);
+    case "clasificar":return renderClasificar(e,host);
+    case "desagregar":return renderDesagregar(e,host);
+    case "emparejar": return renderEmparejar(e,host);
+    case "ordenar":   return renderOrdenar(e,host);
+  }
+}
+
+/* -- Tendencia (etapa 1): gráfico + elegir tendencia + elegir mes -- */
+function renderTendencia(e,host){
+  var g=e.grafico;
+  host.innerHTML='<div class="titulo-mini">'+esc(g.titulo)+' <span class="u">('+g.u+')</span></div>'
+    + graficoLinea(g.datos,g.opts)
+    + '<div class="titulo-mini" style="margin-top:18px">1) La tendencia general es…</div>'
+    + opcionesHTML(e.opciones)
+    + '<div class="titulo-mini" style="margin-top:18px">2) ¿En qué mes cambia el rumbo?</div>'
+    + '<div class="meses-sel" id="meses-sel">'+MESES.map(function(m,idx){
+        return '<button class="mes-chip" data-m="'+idx+'">'+m+'</button>';
+      }).join("")+'</div>';
+  wireOpciones(host,function(idx){ respuestaActual.opcion=idx; });
+  host.querySelectorAll(".mes-chip").forEach(function(b){
+    b.addEventListener("click",function(){
+      host.querySelectorAll(".mes-chip").forEach(function(x){x.classList.remove("sel");});
+      b.classList.add("sel"); respuestaActual.mes=+b.getAttribute("data-m");
+    });
+  });
+  // restaurar
+  if(respuestaActual.opcion!=null) marcarOpcion(host,respuestaActual.opcion);
+  if(respuestaActual.mes!=null){ var mc=host.querySelector('.mes-chip[data-m="'+respuestaActual.mes+'"]'); if(mc) mc.classList.add("sel"); }
+}
+
+/* -- Opción única, con 0..n gráficos arriba (etapas 2,3) -- */
+function renderOpcion(e,host){
+  var html="";
+  if(e.graficos){
+    html+='<div class="grafico-doble">'+e.graficos.map(function(g){
+      return '<div><div class="titulo-mini">'+esc(g.titulo)+' <span class="u">('+g.u+')</span></div>'+graficoLinea(g.datos,g.opts)+'</div>';
+    }).join("")+'</div>';
+  }
+  html+='<div class="titulo-mini" style="margin-top:16px">Elige una respuesta:</div>'+opcionesHTML(e.opciones);
+  host.innerHTML=html;
+  wireOpciones(host,function(idx){ respuestaActual.opcion=idx; });
+  if(respuestaActual.opcion!=null) marcarOpcion(host,respuestaActual.opcion);
+}
+
+/* -- Elegir gráfico (etapa 5) -- */
+function renderElegirGrafico(e,host){
+  var g=e.graficoArriba;
+  host.innerHTML='<div class="titulo-mini">'+esc(g.titulo)+' <span class="u">('+g.u+')</span></div>'
+    + graficoLinea(g.datos,g.opts)
+    + '<div class="titulo-mini" style="margin-top:18px">¿Cuál revela la realidad mes a mes?</div>'
+    + '<div class="opcion-grid" id="op-grid">'+e.opciones.map(function(o,idx){
+        return '<button class="opcion" data-i="'+idx+'">'+o.svg+'<span>'+esc(o.t)+'</span></button>';
+      }).join("")+'</div>';
+  host.querySelectorAll(".opcion").forEach(function(b){
+    b.addEventListener("click",function(){
+      host.querySelectorAll(".opcion").forEach(function(x){x.classList.remove("sel");});
+      b.classList.add("sel"); respuestaActual.opcion=+b.getAttribute("data-i");
+    });
+  });
+  if(respuestaActual.opcion!=null){ var s=host.querySelector('.opcion[data-i="'+respuestaActual.opcion+'"]'); if(s) s.classList.add("sel"); }
+}
+
+/* -- Eje engañoso (etapa 6) -- */
+function renderEje(e,host){
+  host.innerHTML='<div class="grafico-doble">'
+    + '<div><div class="titulo-mini">'+esc(e.grafA.titulo)+' <span class="u">(eje desde 0)</span></div>'+graficoLinea(e.grafA.datos,e.grafA.opts)+'</div>'
+    + '<div><div class="titulo-mini">'+esc(e.grafB.titulo)+' <span class="u">(eje recortado)</span></div>'+graficoLinea(e.grafB.datos,e.grafB.opts)+'</div>'
+    + '</div>'
+    + '<div class="titulo-mini" style="margin-top:16px">¿Cuál exagera la caída y por qué?</div>'+opcionesHTML(e.opciones);
+  wireOpciones(host,function(idx){ respuestaActual.opcion=idx; });
+  if(respuestaActual.opcion!=null) marcarOpcion(host,respuestaActual.opcion);
+}
+
+/* -- Clasificar en 2 grupos (etapas 4,9) -- */
+function renderClasificar(e,host){
+  if(!respuestaActual.asign) respuestaActual.asign={};
+  host.innerHTML='<div class="clasif-instr">Toca cada métrica para asignarla. Cada toque la cambia de grupo.</div>'
+    + '<div class="cubos"><div class="cubo a"><h4>'+esc(e.grupos[0])+'</h4></div><div class="cubo b"><h4>'+esc(e.grupos[1])+'</h4></div></div>'
+    + '<div class="titulo-mini">Sin asignar — toca para clasificar:</div>'
+    + '<div class="chip-pool" id="chip-pool">'+e.items.map(function(it,idx){
+        return '<button class="chip-item" data-i="'+idx+'">'+esc(it.t)+'</button>';
+      }).join("")+'</div>';
+  host.querySelectorAll(".chip-item").forEach(function(b){
+    var idx=+b.getAttribute("data-i");
+    b.addEventListener("click",function(){
+      var cur=respuestaActual.asign[idx];
+      var next = (cur==null)?0:(cur===0?1:null); // sin->A->B->sin
+      if(next==null) delete respuestaActual.asign[idx]; else respuestaActual.asign[idx]=next;
+      pintarChip(b,respuestaActual.asign[idx]);
+    });
+    pintarChip(b,respuestaActual.asign[idx]);
+  });
+}
+function pintarChip(b,g){
+  b.classList.remove("g0","g1");
+  if(g===0) b.classList.add("g0");
+  else if(g===1) b.classList.add("g1");
+  var base=b.textContent.replace(/^[➡⬅•\s]+/,"");
+}
+
+/* -- Desagregar (etapa 7) -- */
+function renderDesagregar(e,host){
+  host.innerHTML='<div style="text-align:center"><div class="num-foco">'+esc(e.numero.valor)+'</div><div class="num-sub">'+esc(e.numero.sub)+'</div></div>'
+    + '<div style="text-align:center;margin:16px 0"><button class="btn secundario" id="btn-desg">🔍 Desagregar por sucursal</button></div>'
+    + '<div id="desglose-zona"></div>'
+    + '<div class="titulo-mini" style="margin-top:16px">¿Qué conclusión es la correcta?</div>'+opcionesHTML(e.opciones);
+  wireOpciones(host,function(idx){ respuestaActual.opcion=idx; });
+  if(respuestaActual.opcion!=null) marcarOpcion(host,respuestaActual.opcion);
+  var zona=host.querySelector("#desglose-zona");
+  function mostrarDesg(){
+    respuestaActual.desagregado=true;
+    zona.innerHTML='<div class="grafico-box">'+barras(e.desglose,7000,"")+'</div>'
+      +'<div class="num-sub" style="margin-top:8px">'+esc(e.desgloseNota)+'</div>';
+  }
+  host.querySelector("#btn-desg").addEventListener("click",mostrarDesg);
+  if(respuestaActual.desagregado) mostrarDesg();
+}
+
+/* -- Emparejar (etapa 8) -- */
+function renderEmparejar(e,host){
+  if(!respuestaActual.filas) respuestaActual.filas={};
+  host.innerHTML=e.filas.map(function(f,fi){
+    return '<div class="empareja-fila"><div class="pregunta">'+esc(f.pregunta)+'</div>'
+      +'<div class="empareja-ops" data-f="'+fi+'">'+f.ops.map(function(op,oi){
+        return '<button class="op-mini" data-o="'+oi+'">'+esc(op)+'</button>';
+      }).join("")+'</div></div>';
+  }).join("");
+  host.querySelectorAll(".empareja-ops").forEach(function(row){
+    var fi=+row.getAttribute("data-f");
+    row.querySelectorAll(".op-mini").forEach(function(b){
+      b.addEventListener("click",function(){
+        row.querySelectorAll(".op-mini").forEach(function(x){x.classList.remove("sel");});
+        b.classList.add("sel"); respuestaActual.filas[fi]=+b.getAttribute("data-o");
+      });
+      if(respuestaActual.filas[fi]===+b.getAttribute("data-o")) b.classList.add("sel");
+    });
+  });
+}
+
+/* -- Ordenar + recomendación + KPI (etapa 10) -- */
+function renderOrdenar(e,host){
+  if(!respuestaActual.orden) respuestaActual.orden=[];
+  host.innerHTML='<div class="titulo-mini">1) Ordena la cadena causal (toca en secuencia):</div>'
+    + '<div class="seq-pool" id="seq-pool">'+e.pasos.map(function(p,idx){
+        return '<div class="seq-item" data-i="'+idx+'"><span class="orden">·</span><span>'+esc(p)+'</span></div>';
+      }).join("")+'</div>'
+    + '<div style="text-align:right"><button class="btn fantasma" id="btn-reset-seq" style="font-size:.9rem;padding:.5rem 1rem">↺ Reiniciar orden</button></div>'
+    + '<div class="sub-bloque"><div class="titulo-mini">2) '+esc(e.recomendacion.titulo)+'</div>'+opcionesHTML(e.recomendacion.ops,"rec")+'</div>'
+    + '<div class="sub-bloque"><div class="titulo-mini">3) '+esc(e.kpi.titulo)+'</div>'+opcionesHTML(e.kpi.ops,"kpi")+'</div>';
+
+  var pool=host.querySelector("#seq-pool");
+  function repintarSeq(){
+    pool.querySelectorAll(".seq-item").forEach(function(it){
+      var idx=+it.getAttribute("data-i");
+      var pos=respuestaActual.orden.indexOf(idx);
+      it.classList.toggle("elegido",pos!==-1);
+      it.querySelector(".orden").textContent=(pos!==-1)?(pos+1):"·";
+    });
+  }
+  pool.querySelectorAll(".seq-item").forEach(function(it){
+    it.addEventListener("click",function(){
+      var idx=+it.getAttribute("data-i");
+      var pos=respuestaActual.orden.indexOf(idx);
+      if(pos!==-1) respuestaActual.orden.splice(pos,1); else respuestaActual.orden.push(idx);
+      repintarSeq();
+    });
+  });
+  host.querySelector("#btn-reset-seq").addEventListener("click",function(){ respuestaActual.orden=[]; repintarSeq(); });
+  repintarSeq();
+
+  wireOpciones(host,function(idx,grupo){ if(grupo==="rec") respuestaActual.rec=idx; else respuestaActual.kpi=idx; });
+  if(respuestaActual.rec!=null) marcarOpcion(host,respuestaActual.rec,"rec");
+  if(respuestaActual.kpi!=null) marcarOpcion(host,respuestaActual.kpi,"kpi");
+}
+
+/* ===================== COMPONENTE DE OPCIONES ===================== */
+function opcionesHTML(ops,grupo){
+  grupo=grupo||"main";
+  return '<div class="opciones" data-grupo="'+grupo+'">'+ops.map(function(o,idx){
+    return '<button class="opcion" data-i="'+idx+'" data-g="'+grupo+'"><span class="marca"></span><span>'+esc(o.t)+'</span></button>';
+  }).join("")+'</div>';
+}
+function wireOpciones(host,cb){
+  host.querySelectorAll(".opciones").forEach(function(grp){
+    var grupo=grp.getAttribute("data-grupo");
+    grp.querySelectorAll(".opcion").forEach(function(b){
+      b.addEventListener("click",function(){
+        grp.querySelectorAll(".opcion").forEach(function(x){x.classList.remove("sel"); x.querySelector(".marca").textContent="";});
+        b.classList.add("sel"); b.querySelector(".marca").textContent="✓";
+        cb(+b.getAttribute("data-i"),grupo);
+      });
+    });
+  });
+}
+function marcarOpcion(host,idx,grupo){
+  grupo=grupo||"main";
+  var grp=host.querySelector('.opciones[data-grupo="'+grupo+'"]'); if(!grp) return;
+  var b=grp.querySelector('.opcion[data-i="'+idx+'"]'); if(b){ b.classList.add("sel"); b.querySelector(".marca").textContent="✓"; }
+}
+
+/* ===================== EVALUACIÓN ===================== */
+function evaluar(e){
+  var r=respuestaActual;
+  switch(e.tipo){
+    case "tendencia":
+      return r.opcion!=null && e.opciones[r.opcion].ok && r.mes===e.mesCorrecto;
+    case "opcion": case "eje":
+      return r.opcion!=null && !!e.opciones[r.opcion].ok;
+    case "elegir-grafico":
+      return r.opcion!=null && !!e.opciones[r.opcion].ok;
+    case "desagregar":
+      return r.opcion!=null && !!e.opciones[r.opcion].ok;
+    case "clasificar":
+      if(!r.asign) return false;
+      var ok=true;
+      e.items.forEach(function(it,idx){ if(r.asign[idx]!==it.g) ok=false; });
+      return ok;
+    case "emparejar":
+      if(!r.filas) return false;
+      var todo=true;
+      e.filas.forEach(function(f,fi){ if(r.filas[fi]!==f.ok) todo=false; });
+      return todo;
+    case "ordenar":
+      var ordenOk = r.orden && r.orden.length===e.pasos.length && r.orden.every(function(v,i){return v===i;});
+      var recOk = r.rec!=null && !!e.recomendacion.ops[r.rec].ok;
+      var kpiOk = r.kpi!=null && !!e.kpi.ops[r.kpi].ok;
+      return ordenOk && recOk && kpiOk;
+  }
+  return false;
+}
+
+/* ===================== COMPROBAR ===================== */
+function comprobar(){
+  var i=estado.viendo, e=ETAPAS[i];
+  if(estado.completadas.indexOf(i)!==-1) return; // ya resuelta
+  var correcto=evaluar(e);
+  var fb=document.getElementById("feedback");
+  if(correcto){
+    // puntaje
+    var base=e.estrellas*10;
+    var penPista=estado.usoPista[i]?3:0;
+    var penInt=(estado.intentos[i]||0)*5;
+    var gana=Math.max(base-penPista-penInt, Math.ceil(base/2));
+    estado.puntos+=gana;
+    estado.completadas.push(i);
+    fb.className="feedback bien visible";
+    fb.innerHTML='<div class="titf">✅ ¡Correcto! +'+gana+' puntos</div><div>'+e.feedbackBien+'</div>';
+    mostrarResuelta(e,false);
+    pintarBarra();
+  } else {
+    estado.intentos[i]=(estado.intentos[i]||0)+1;
+    fb.className="feedback mal visible";
+    fb.innerHTML='<div class="titf">🔎 Aún no… vuelve a mirar los datos</div><div>'+e.feedbackMal+'</div>';
+  }
+}
+
+/* Muestra la etapa resuelta: marca aciertos, bloquea, revela lección y botón siguiente */
+function mostrarResuelta(e, restaurando){
+  var i=estado.viendo;
+  document.getElementById("leccion").classList.add("visible");
+  if(restaurando){
+    var fb=document.getElementById("feedback");
+    fb.className="feedback bien visible";
+    fb.innerHTML='<div class="titf">✅ Etapa resuelta</div><div>'+e.feedbackBien+'</div>';
+  }
+  // marcar visualmente lo correcto y bloquear interacción
+  var cuerpo=document.getElementById("etapa-cuerpo");
+  pintarSolucion(e,cuerpo);
+  cuerpo.querySelectorAll("button").forEach(function(b){ b.disabled=true; });
+  // botones de acción
+  document.getElementById("btn-comprobar").style.display="none";
+  document.getElementById("btn-pista").disabled=true;
+  var izq=document.querySelector(".acciones-etapa .izq");
+  var derecha=document.querySelector(".acciones-etapa");
+  if(!document.getElementById("btn-siguiente")){
+    var bs=document.createElement("button");
+    bs.className="btn"; bs.id="btn-siguiente";
+    bs.textContent=(i<ETAPAS.length-1)?"Siguiente etapa ▶":"Ver repaso 🧠";
+    bs.addEventListener("click",function(){
+      if(i<ETAPAS.length-1){
+        if(estado.idx<i+1) estado.idx=i+1;
+        mostrarEtapa(i+1);
+      } else { mostrarRepaso(); }
+    });
+    derecha.appendChild(bs);
+  } else {
+    document.getElementById("btn-siguiente").textContent=(i<ETAPAS.length-1)?"Siguiente etapa ▶":"Ver repaso 🧠";
+  }
+}
+
+/* Pinta la solución correcta sobre el widget */
+function pintarSolucion(e,host){
+  var r=estado.resp[estado.viendo]||{};
+  if(e.tipo==="opcion"||e.tipo==="eje"||e.tipo==="elegir-grafico"||e.tipo==="desagregar"||e.tipo==="tendencia"){
+    var grp=host.querySelector('.opciones[data-grupo="main"]')||host;
+    (e.opciones||[]).forEach(function(o,idx){
+      var b = (e.tipo==="elegir-grafico") ? host.querySelector('.opcion[data-i="'+idx+'"]') : grp.querySelector('.opcion[data-i="'+idx+'"]');
+      if(!b) return;
+      if(o.ok) b.classList.add("ok");
+      else if(r.opcion===idx) b.classList.add("mal");
+    });
+    if(e.tipo==="tendencia"){
+      host.querySelectorAll(".mes-chip").forEach(function(mc){
+        var m=+mc.getAttribute("data-m");
+        if(m===e.mesCorrecto) mc.classList.add("sel");
+      });
+    }
+  }
+  if(e.tipo==="clasificar"){
+    host.querySelectorAll(".chip-item").forEach(function(b){
+      var idx=+b.getAttribute("data-i");
+      b.classList.add((r.asign && r.asign[idx]===e.items[idx].g)?"ok":"mal");
+    });
+  }
+  if(e.tipo==="emparejar"){
+    e.filas.forEach(function(f,fi){
+      var row=host.querySelectorAll(".empareja-ops")[fi];
+      if(!row) return;
+      row.querySelectorAll(".op-mini").forEach(function(b){
+        var oi=+b.getAttribute("data-o");
+        if(oi===f.ok) b.classList.add("ok");
+        else if(r.filas && r.filas[fi]===oi) b.classList.add("mal");
+      });
+    });
+  }
+  if(e.tipo==="ordenar"){
+    host.querySelectorAll(".seq-item").forEach(function(it){
+      var idx=+it.getAttribute("data-i");
+      var pos=(r.orden||[]).indexOf(idx);
+      it.classList.remove("elegido");
+      it.classList.add(pos===idx?"ok":"mal");
+      it.querySelector(".orden").textContent=idx+1; // orden correcto
+    });
+    ["rec","kpi"].forEach(function(g){
+      var ops=(g==="rec")?e.recomendacion.ops:e.kpi.ops;
+      var grp=host.querySelector('.opciones[data-grupo="'+g+'"]'); if(!grp) return;
+      ops.forEach(function(o,idx){
+        var b=grp.querySelector('.opcion[data-i="'+idx+'"]'); if(!b) return;
+        if(o.ok) b.classList.add("ok"); else if(r[g]===idx) b.classList.add("mal");
+      });
+    });
+  }
+}
+
+/* ===================== REPASO ===================== */
+function mostrarRepaso(){
+  var lista=document.getElementById("repaso-lista"); lista.innerHTML="";
+  ETAPAS.forEach(function(e,i){
+    var div=document.createElement("div"); div.className="repaso-item";
+    div.innerHTML='<div class="ck">✓</div><div><div class="tt">'+(i+1)+'. '+esc(e.titulo)+' '+estrellasMini(e.estrellas)+'</div>'
+      +'<div class="ds">'+e.leccion+'</div></div>';
+    lista.appendChild(div);
+  });
+  irA("pantalla-repaso");
+}
+function estrellasMini(n){ var s=""; for(var i=0;i<n;i++) s+="★"; return '<span style="color:var(--amarillo)">'+s+'</span>'; }
+
+/* ===================== FINAL ===================== */
+function mostrarFinal(){
+  detenerCrono();
+  document.getElementById("final-equipo").textContent=estado.equipo;
+  document.getElementById("final-puntaje").textContent=estado.puntos;
+  document.getElementById("final-tiempo").textContent=fmt(estado.segundos);
+  document.getElementById("final-etapas").textContent=estado.completadas.length+"/10";
+  document.getElementById("final-pistas").textContent=estado.pistasUsadas;
+
+  var maxPts=ETAPAS.reduce(function(a,e){return a+e.estrellas*10;},0); // 300
+  var ratio=estado.puntos/maxPts;
+  var emoji,medalla;
+  if(ratio>=0.9){emoji="🏆";medalla="🥇 Detective Maestro de Datos";}
+  else if(ratio>=0.7){emoji="🔎";medalla="🥈 Detective Senior";}
+  else if(ratio>=0.5){emoji="🧐";medalla="🥉 Detective en ascenso";}
+  else {emoji="🕵️";medalla="🔰 Detective aprendiz — ¡a seguir investigando!";}
+  document.getElementById("final-emoji").textContent=emoji;
+  document.getElementById("final-medalla").textContent=medalla;
+  irA("pantalla-final");
+  lanzarConfeti(ratio>=0.7?100:50);
+}
+function lanzarConfeti(cant){
+  var col=["#0098AA","#F4AA00","#E55302","#2E9E5B","#36424A"];
+  for(var i=0;i<cant;i++){(function(){
+    var c=document.createElement("div"); c.className="confeti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=col[Math.floor(Math.random()*col.length)];
+    c.style.animationDuration=(2.5+Math.random()*2)+"s";
+    c.style.animationDelay=(Math.random()*0.6)+"s";
+    if(Math.random()>0.6) c.style.borderRadius="50%";
+    document.body.appendChild(c);
+    setTimeout(function(){c.remove();},5200);
+  })();}
+}
+
+/* ===================== ARRANQUE / RESET ===================== */
+function comenzar(nombre){
+  estado=nuevoEstado();
+  estado.equipo=nombre;
+  document.getElementById("barra-nombre").textContent=nombre;
+  irA("pantalla-juego");
+  iniciarCrono();
+  mostrarEtapa(0);
+}
 function reiniciar(){
   detenerCrono();
-  estado = { equipo:"", marcas:{}, revelado:false, inicio:0, intervalo:null, segundos:0 };
-  document.getElementById("input-equipo").value = "";
-  document.getElementById("btn-comenzar").disabled = true;
+  estado=nuevoEstado();
+  document.getElementById("input-equipo").value="";
+  document.getElementById("btn-comenzar").disabled=true;
   irA("pantalla-inicio");
   document.getElementById("input-equipo").focus();
 }
 
-/* ============ EVENTOS ============ */
-document.getElementById("input-equipo").addEventListener("input", function(e){
-  document.getElementById("btn-comenzar").disabled = e.target.value.trim().length === 0;
+/* ===================== EVENTOS GLOBALES ===================== */
+document.getElementById("input-equipo").addEventListener("input",function(e){
+  document.getElementById("btn-comenzar").disabled=e.target.value.trim().length===0;
 });
-
-document.getElementById("form-equipo").addEventListener("submit", function(e){
+document.getElementById("form-equipo").addEventListener("submit",function(e){
   e.preventDefault();
-  var nombre = document.getElementById("input-equipo").value.trim();
-  if(nombre.length === 0) return;
-  comenzar(nombre);
+  var n=document.getElementById("input-equipo").value.trim();
+  if(n) comenzar(n);
 });
-
-document.getElementById("btn-revelar").addEventListener("click", revelar);
-document.getElementById("btn-resultados").addEventListener("click", mostrarFinal);
-document.getElementById("btn-reiniciar").addEventListener("click", reiniciar);
+document.getElementById("btn-ver-final").addEventListener("click",mostrarFinal);
+document.getElementById("btn-reiniciar").addEventListener("click",reiniciar);
 </script>
 </body>
 </html>
